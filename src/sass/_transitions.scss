@@ -1,0 +1,9 @@
+.popup-enter-active, .popup-leave-active {
+	transition: opacity .5s, transform .5s;
+	transform: scale(1);
+}
+.popup-enter, .popup-leave-to  {
+	opacity: 0;
+	transform: scale(0.75);
+	backface-visibility: hidden;
+}

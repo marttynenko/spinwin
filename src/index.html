@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Spin & Win</title>
+  <meta name="keywords" content="Spin & Win" />
+  <meta name="description" content="Spin & Win" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="format-detection" content="telephone=no" />
+  
+
+  <style>
+    @font-face {
+      font-family: 'Speedee';
+      src: local('Speedee'), local('Speedee-Regular'),
+        url('fonts/Speedee/Speedee_Rg.otf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: fallback;
+    }
+    @font-face {
+      font-family: 'Speedee';
+      src: local('Speedee Bold'), local('Speedee-Bold'),
+        url('fonts/Speedee/Speedee_Bd.otf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: fallback;
+    }
+  </style>
+  <!-- favicons -->
+  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+  <link rel="shortcut" sizes="128x128" href="images/favicon.png.png" type="image/png">
+
+  <link rel="stylesheet" href="css/normalize.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="css/app.css" type="text/css" media="all" />
+
+  <!--[if lt IE 9]>
+    <script>
+    var e = ("abbr,article,aside,audio,canvas,datalist,details," +
+    "figure,footer,header,hgroup,mark,menu,meter,nav,output," +
+    "progress,section,time,video").split(',');
+    for (var i = 0; i < e.length; i++) {
+    document.createElement(e[i]);
+    }
+    </script>
+  <![endif]-->
+</head>
+
+<body>
+<div id="app" class="app">
+  <div class="inner">
+    <div class="app-title">Подарки<br>от Миньонов</div>
+    <div class="wheel">
+      <div class="wheel-logo"><img src="images/wheel-logo.png" srcset="images/wheel-logo@2x.png 2x" alt="McDonald's"></div>
+
+      <div class="wheel-body"><img src="images/wheel.png" srcset="images/wheel@2x.png 2x" alt="Игра Spin&Win"></div>
+
+      <div class="wheel-wheel" ref="wheel"><img src="images/wheel.png" srcset="images/wheel@2x.png 2x" alt="Игра Spin&Win"></div>
+
+      <a href="javascript:void(0)" class="wheel-btn" @click.prevent="askServer">GO</a>
+
+      <div class="wheel-minion-top"><img src="images/minion-top.png" srcset="images/minion-top@2x.png 2x" alt="minion"></div>
+      <div class="wheel-minion-bottom"><img src="images/minion-bottom.png" srcset="images/minion-bottom@2x.png 2x" alt="minion"></div>
+
+      <div class="wheel-leg"></div>
+    </div>
+
+    <transition name="popup">
+      <div class="popup-nowin" v-if="popupLose">
+        <div class="popup-nowin-inner">
+          <div class="popup-nowin-title">Упс!<br>Кажется миньоны спрятали твой подарок.<br>Попробуй еще раз!</div>
+          <div class="popup-nowin-btn"><a href="javascript:void(0)" @click.prevent="showLosePopup" class="btn btn-block">Крутить</a></div>
+          <div class="popup-nowin-img"><img src="images/popups/popup-nowin.png" srcset="images/popups/popup-nowin@2x.png" alt="Миньон"></div>
+        </div>
+      </div>
+    </transition>
+
+    <transition name="popup">
+      <div class="popup-win-wrp flex align-center valign-center" v-show="popupWin">
+        <div class="popup-win">
+          <div class="dish" v-if="prize != null">
+            <div class="dish-img-wrp">
+              <div class="dish-price">{{prize.price || ''}}</div>
+              <div class="dish-img">
+                <img
+                  v-bind:src="prize.image || ''"
+                  v-bind:srcset="prize.imageRetina || ''"
+                  v-bind:alt="prize.title || ''"
+                >
+              </div>
+            </div>
+            
+            <div class="dish-title">{{prize.title || ''}} всего за {{prize.price || ''}}</div>
+            <div class="dish-expiried">Истекает {{prize.exp || ''}}</div>
+            <div class="dish-hint">Предъявите данный купон кассиру перед заказом,либо просканируйте через экран самообслуживания</div>
+            
+            <div class="dish-code">
+              <img
+                v-bind:src="prize.code || ''"
+                v-bind:srcset="prize.codeRetina || ''"
+                alt="штрихкод"
+              >
+              <div class="dish-code-number">{{prize.codeNumber || ''}}</div>
+            </div>
+            <div class="dish-expiriedtime">{{prize.exptime || ''}}</div>
+          </div><!--.dish-->
+          <div class="popup-win-btn"><a href="javascript:void(0)" @click.prevent="showWinPopup" class="btn btn-block">Крутить еще раз</a></div>
+        </div>
+      </div>
+    </transition>
+  </div><!--.inner-->
+</div><!-- #app -->
+
+
+<script src="js/vue.js"></script>
+<script src="js/gsap.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

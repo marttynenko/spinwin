@@ -1,0 +1,157 @@
+body.header-fixed {
+	padding-top: 40px;
+}
+header.header {
+	background: #323232;
+
+	a {
+		color: #FFF;
+
+		&:hover {
+			color: $primary;
+		}
+	}
+	&.fixed {
+		position: fixed;
+		top: -60px;
+		left: 0;
+		right: 0;
+		z-index: 199;
+	}
+}
+.header-flex {
+	min-height: 60px;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+.header-logo {
+	text-align: center;
+	flex: 0 0 100%;
+	max-width: 100%;
+}
+.logo {
+	height: 60px;
+	display: block;
+	padding: 13px 0;
+
+	img {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		max-height: 34px;
+	}
+}
+.header-menu {
+	@include fz(14);
+	flex: 0 0 100%;
+	max-width: 100%;
+	position: relative;
+	z-index: 1;
+
+
+	&:after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    left: -1000px;
+    right: -1000px;
+    top: 0;
+    bottom: 0;
+    background: #2d2d2d;
+  }
+}
+.main-menu {
+	ul {
+		font-size: 0;
+	}
+	li {
+		@include fz(14);
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: 20px;
+	}
+	a {
+		display: block;
+		height: 40px;
+		line-height: 40px;
+	}
+}
+.compare-link {
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+}
+
+
+@media (min-width: 345px) {
+	.compare-link-icon {
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 4px;
+		width: 18px;
+		height: 18px;
+		background: url(../images/svg/compare-icon.svg) center no-repeat;
+		background-size: contain;
+		position: relative;
+		top: -1px;
+	}
+}
+@media (min-width: 768px) {
+	body, body.header-fixed {
+		padding-top: 60px;
+	}
+	header.header {
+		background: #323232;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 19;
+
+		&.fixed {
+			top: 0;
+			padding-top: 0;
+		}
+	}
+	.header-flex {
+		-ms-flex-wrap: nowrap;
+		flex-wrap: nowrap;
+	}
+	.header-logo {
+		-ms-flex: 0 0 auto;
+		flex: 0 0 auto;
+		padding: 0 50px 0 0;
+	}
+	.header-menu {
+		-ms-flex: 1 0 auto;
+		flex: 1 0 auto;
+		@include fz(16);
+		background: none;
+		position: static;
+
+		&:after {
+			content: none;
+		}
+	}
+	.logo {
+		img {
+			margin: 0;
+		}
+	}
+	.mian-menu {
+		li {
+			@include fz(16);
+		}
+	}
+}
+@media (max-width: 576px) {
+	// header.header .inner {
+	// 	padding-left: 0;
+	// 	padding-right: 0;
+	// }
+	// .header-menu {
+	// 	padding-left: $gutter;
+	// 	padding-right: $gutter;
+	// 	background: #2d2d2d;
+	// }
+}

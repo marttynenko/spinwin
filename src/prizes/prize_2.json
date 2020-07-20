@@ -1,0 +1,12 @@
+{
+  "sector": "3",
+  "price": "3.50",
+  "title":"БигМак",
+  "exp": "2020-07-29",
+  "exptime": "Действует с 10:00 до 06:00",
+  "image": "images/popups/dish-1.png",
+  "imageRetina": "images/popups/dish-1@2x.png 2x",
+  "codeNumber": "000-0000 2488",
+  "code": "images/popups/dish-shtrih-1.jpg",
+  "codeRetina": "images/popups/dish-shtrih-1@2x.jpg 2x"
+}
