@@ -44,9 +44,9 @@ let $app = new Vue({
       return (degrees / 360 * 2.5);
     },
     askServer() {
-      // let randInt = this.randomInteger(1,5);
-      // fetch(`./prizes/prize_${randInt}.json`)
-      fetch(this.url)
+      let randInt = this.randomInteger(1,10);
+      fetch(`./prizes/prize_${randInt}.json`)
+      // fetch(this.url)
         .then(response => response.json())
         .then(item => {
           if (+item.sector !== -1) {
