@@ -66,46 +66,61 @@
       <div class="wheel-leg"></div>
     </div>
 
-    <transition name="popup">
-      <div class="popup-nowin" v-if="popupLose">
-        <div class="popup-nowin-inner">
-          <div class="popup-nowin-title">Упс!<br>Кажется миньоны спрятали твой подарок.<br>Попробуй еще раз!</div>
-          <div class="popup-nowin-btn"><a href="javascript:void(0)" @click.prevent="showLosePopup" class="btn btn-block">Крутить</a></div>
-          <div class="popup-nowin-img"><img src="images/popups/popup-nowin.png" srcset="images/popups/popup-nowin@2x.png" alt="Миньон"></div>
+    <transition
+      v-on:enter="popupLoseEnter"
+      v-on:leave="popupLoseLeave"
+      v-bind:css="false"
+    >
+      <div class="popup-wrp popup-nowin-wrp" v-show="popupLose">
+        <div class="popup-container">
+          <div class="popup-content">
+            <div class="popup popup-nowin">
+              <div class="popup-nowin-txt">
+                <div class="popup-nowin-title">Упс!<br>Кажется миньоны спрятали твой подарок.<br>Попробуй еще раз!</div>
+                <div class="popup-nowin-btn"><a href="javascript:void(0)" @click.prevent="showLosePopup" class="btn btn-block">Крутить</a></div>
+              </div>
+              <div class="popup-nowin-img"><img src="images/popups/popup-nowin.png" srcset="images/popups/popup-nowin@2x.png" alt="Миньон"></div>
+            </div>
+          </div>
         </div>
+        <div class="popup-nowin-bg"></div>
       </div>
     </transition>
 
     <transition name="popup">
-      <div class="popup-win-wrp flex align-center valign-center" v-show="popupWin">
-        <div class="popup-win">
-          <div class="dish" v-if="prize != null">
-            <div class="dish-img-wrp">
-              <div class="dish-price">{{prize.price || ''}}</div>
-              <div class="dish-img">
-                <img
-                  v-bind:src="prize.image || ''"
-                  v-bind:srcset="prize.imageRetina || ''"
-                  v-bind:alt="prize.title || ''"
-                >
-              </div>
+      <div class="popup-wrp popup-win-wrp" v-show="popupWin">
+        <div class="popup-container">
+          <div class="popup-content">
+            <div class="popup popup-win">
+              <div class="dish" v-if="prize != null">
+                <div class="dish-img-wrp">
+                  <div class="dish-price">{{prize.price || ''}}</div>
+                  <div class="dish-img">
+                    <img
+                      v-bind:src="prize.image || ''"
+                      v-bind:srcset="prize.imageRetina || ''"
+                      v-bind:alt="prize.title || ''"
+                    >
+                  </div>
+                </div>
+                
+                <div class="dish-title">{{prize.title || ''}} всего за {{prize.price || ''}}</div>
+                <div class="dish-expiried">Истекает {{prize.exp || ''}}</div>
+                <div class="dish-hint">Предъявите данный купон кассиру перед заказом,либо просканируйте через экран самообслуживания</div>
+                
+                <div class="dish-code">
+                  <img
+                    v-bind:src="prize.code || ''"
+                    v-bind:srcset="prize.codeRetina || ''"
+                    alt="штрихкод"
+                  >
+                  <div class="dish-code-number">{{prize.codeNumber || ''}}</div>
+                </div>
+                <div class="dish-expiriedtime">{{prize.exptime || ''}}</div>
+              </div><!--.dish-->
+              <div class="popup-win-btn"><a href="javascript:void(0)" @click.prevent="showWinPopup" class="btn btn-block">Крутить еще раз</a></div>
             </div>
-            
-            <div class="dish-title">{{prize.title || ''}} всего за {{prize.price || ''}}</div>
-            <div class="dish-expiried">Истекает {{prize.exp || ''}}</div>
-            <div class="dish-hint">Предъявите данный купон кассиру перед заказом,либо просканируйте через экран самообслуживания</div>
-            
-            <div class="dish-code">
-              <img
-                v-bind:src="prize.code || ''"
-                v-bind:srcset="prize.codeRetina || ''"
-                alt="штрихкод"
-              >
-              <div class="dish-code-number">{{prize.codeNumber || ''}}</div>
-            </div>
-            <div class="dish-expiriedtime">{{prize.exptime || ''}}</div>
-          </div><!--.dish-->
-          <div class="popup-win-btn"><a href="javascript:void(0)" @click.prevent="showWinPopup" class="btn btn-block">Крутить еще раз</a></div>
+          </div>
         </div>
       </div>
     </transition>

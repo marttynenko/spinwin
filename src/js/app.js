@@ -44,9 +44,9 @@ let $app = new Vue({
       return (degrees / 360 * 2.5);
     },
     askServer() {
-      let randInt = this.randomInteger(1,10);
-      fetch(`./prizes/prize_${randInt}.json`)
-      // fetch(this.url)
+      // let randInt = this.randomInteger(1,10);
+      // fetch(`./prizes/prize_${randInt}.json`)
+      fetch(this.url)
         .then(response => response.json())
         .then(item => {
           if (+item.sector !== -1) {
@@ -129,6 +129,28 @@ let $app = new Vue({
           this.showLosePopup();
         },200)
       });
+    },
+    popupLoseEnter(el,done) {
+      const d = document
+      const bg = d.querySelector('.popup-nowin-bg')
+      const img = d.querySelector('.popup-nowin-img')
+      const txt = d.querySelector('.popup-nowin-txt')
+
+      let $tl = gsap.timeline()
+      $tl.to(bg, {x: '0%', duration: 1})
+          .to(img, {x: '0%', opacity: 1, duration: 0.8, delay: -0.75})
+          .to(txt, {y: '0%', opacity: 1, duration: 0.5, delay: -0.3, onComplete: done})
+    },
+    popupLoseLeave(el,done) {
+      const d = document
+      const bg = d.querySelector('.popup-nowin-bg')
+      const img = d.querySelector('.popup-nowin-img')
+      const txt = d.querySelector('.popup-nowin-txt')
+
+      let $tl = gsap.timeline()
+      $tl.to(txt, {y: '-100%', opacity: 0, duration: 0.5})
+          .to(img, {x: '-100%', opacity: 0, duration: 0.6, delay: -0.3})
+          .to(bg, {x: '100%', duration: 0.6, delay: -0.6,onComplete: done})
     },
     //функции с суффиксом _random не исползуются!
     _randomWinOrLoss(degrees) {
