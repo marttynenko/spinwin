@@ -260,6 +260,16 @@ img {
     z-index: 1045;
   }
 }
+@media (min-width: 768px) {
+  .popup-wrp::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  .popup-wrp::-webkit-scrollbar-thumb {
+    width: 0;
+    height: 0;
+  }
+}
 .popup-nowin {
   font-weight: 700;
   font-size: 27px;
@@ -323,13 +333,13 @@ img {
     position: relative;
     min-height: 95px;
     margin-bottom: 15px;
-    padding-top: 30px;
-    padding-left: 75px;
+    // padding-top: 30px;
+    // padding-left: 75px;
     text-align: right;
 
     img {
-      position: relative;
-      z-index: 2;
+      // position: relative;
+      // z-index: 2;
     }
   }
   &-price {

@@ -116,6 +116,9 @@ img { max-width: 100%; height: auto; }
 
 .popup-content { position: relative; display: inline-block; vertical-align: middle; margin: 0 auto; text-align: left; z-index: 1045; }
 
+@media (min-width: 768px) { .popup-wrp::-webkit-scrollbar { width: 0; height: 0; }
+  .popup-wrp::-webkit-scrollbar-thumb { width: 0; height: 0; } }
+
 .popup-nowin { font-weight: 700; font-size: 27px; text-align: center; max-width: 410px; margin-left: auto; margin-right: auto; padding: 15px 35px 0px; }
 
 .popup-nowin-title { margin-bottom: 20px; line-height: 1.3; }
@@ -136,9 +139,7 @@ img { max-width: 100%; height: auto; }
 
 .dish { line-height: 1.3; }
 
-.dish-img-wrp { position: relative; min-height: 95px; margin-bottom: 15px; padding-top: 30px; padding-left: 75px; text-align: right; }
-
-.dish-img-wrp img { position: relative; z-index: 2; }
+.dish-img-wrp { position: relative; min-height: 95px; margin-bottom: 15px; text-align: right; }
 
 .dish-price { position: absolute; left: 0; top: 0; background: #FFF; min-width: 95px; height: 95px; line-height: 95px; text-align: center; border-radius: 50%; font-weight: 700; font-size: 30px; }
 
