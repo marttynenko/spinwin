@@ -428,6 +428,31 @@ img {
   }
 }
 
+.app-update {
+  position: absolute;
+  left: 0;
+  top: 32px;
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border: 1px solid $primary;
+  border-radius: 50%;
+  line-height: 1.2;
+  @include fz(16);
+
+  &-wrp {
+    position: relative;
+  }
+
+  &-date {
+    font-weight: 700;
+  }
+}
 
 @media (max-width: 390px) {
   .app-title {

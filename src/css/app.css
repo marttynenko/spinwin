@@ -169,6 +169,12 @@ img { max-width: 100%; height: auto; }
 
 .dish-progress-progress { position: absolute; left: 0; top: 0; bottom: 0; background: #f0c549; }
 
+.app-update { position: absolute; left: 0; top: 32px; width: 80px; height: 80px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 5px; border: 1px solid #ffbd1d; border-radius: 50%; line-height: 1.2; font-size: 16px; font-size: 1rem; }
+
+.app-update-wrp { position: relative; }
+
+.app-update-date { font-weight: 700; }
+
 @media (max-width: 390px) { .app-title { font-size: 37px; margin-bottom: 0px; line-height: 1.2; }
   .popup-win { width: 94%; }
   .btn { font-size: 22px; }
