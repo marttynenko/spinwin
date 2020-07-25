@@ -219,6 +219,18 @@ img {
       box-shadow: 0 0 0 6px #ffefb3, 0 0 0 8px #FFF, 0px 4px 30px rgba(#000,.45);
     }
   }
+  &-rules {
+    position: absolute;
+    right: 0;
+    bottom: -20px;
+    font-size: 12px;
+    color: $font;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary;
+    }
+  }
 }
 
 .popup {
